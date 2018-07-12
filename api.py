@@ -20,7 +20,7 @@ class Get(Resource):
         #args = parser.parse_args()
         connection = pyodbc.connect(driver='{SQL Server}', server='x', database='x',user='x', password='x')
         #cursor = connection.cursor()
-        query = connection.execute("SELECT * FROM test")
+        query = connection.execute("SELECT * FROM testtable")
     
         results=query.fetchall()        
 
@@ -36,9 +36,9 @@ class Get(Resource):
 #Get one id    
 class Getone(Resource):
     def get(self,pid):
-        connection = pyodbc.connect(driver='{SQL Server}', server='mumchsql20', database='testpoc',user='testpoc', password='Crisil#2018')
+        connection = pyodbc.connect(driver='{SQL Server}', server='x', database='x',user='x', password='x')
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM test")
+        cursor.execute("SELECT * FROM testtable")
         response = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall() if row[0]==pid]
         connection.close()
 
